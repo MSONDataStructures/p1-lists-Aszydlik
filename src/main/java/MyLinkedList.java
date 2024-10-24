@@ -119,19 +119,21 @@ public class MyLinkedList {
      * @return the Integer at the specified position in this list
      */
     public Integer get(int index) {
-        // TODO: modify the code here
-        return null;
+       //important
+        if(index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
+        }
+
+        return list[index];
     }
 
-    /**
-     * Replaces the Integer at the specified position in this list with the
-     * specified Integer.
-     * @param index index of the integer to replace
-     * @param item Integer to be stored at the specified position
-     * @throws NullPointerException if item is null
-     */
+
     public void set(int index, Integer item) {
-        // TODO: your code goes here
+       //important
+        if(index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
+        }
+        list[index] = item;
     }
 
     /**
@@ -140,15 +142,8 @@ public class MyLinkedList {
      */
     public int size() {
 
-            int count = 0;
-            Node current = head; // Assuming 'head' is the start of your linked list
+        return size;
 
-            while (current != null) {
-                count++;
-                current = current.next; // Move to the next node
-            }
-
-            return count; // Return the total count of nodes
         }
 
     /**

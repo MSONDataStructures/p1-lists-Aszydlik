@@ -68,54 +68,47 @@ public class MyArrayList
 
     public Integer remove(int index) {
         //important
-        if(index < 0 || index >= size) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        for(int i = index; i < size - 1; i++) {
+        for (int i = index; i < size - 1; i++) {
             list[i] = list[i + 1];
         }
         size--;
-
+        return list[index];
     }
 
+
+
     public Integer get(int index) {
-        if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
+       //important
+        if(index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
 
             return list.get(index);
         }
     }
-    
-    /**
-     * Replaces the Integer at the specified position in this list with the
-     * specified Integer.
-     * @param index index of the integer to replace
-     * @param item Integer to be stored at the specified position
-     * @throws NullPointerException if item is null
-     */
+
     public void set(int index, Integer item) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        //important
+        if(item == null) {
+            throw new NullPointerException();
         }
-        elements[index] = item;
-    }
-    // Assuming 'elements' is your array or list that holds the items
-    /**
-     * Returns the number of Integers in this list.
-     * @return the number of Integers in this list
-     */
-    public int size() {
-        return list.size();
+        if(index < 0 || index >= size){
+            throw new IndexOutOfBoundsException();
+
+            list[index] = item;
     }
 
-    /**
-     * Returns the index of the first occurrence of the specified Integer
-     * in this list, or -1 if this list does not contain the Integer.
-     * @param item Integer to search for
-     * @return the index of the first occurrence of the specified Integer
-     * in this list, or -1 if this list does not contain the Integer
-     * @throws NullPointerException if item is null
-     */
+
+    public int size() {
+            //importan
+
+        return size;
+    }
+
+
     public int indexOf(Integer item) {
            for (int i = 0; i < elements.length; i++) {
                    if (elements[i].equals(item)) {
