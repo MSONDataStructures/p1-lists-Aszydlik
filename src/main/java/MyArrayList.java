@@ -19,34 +19,39 @@
 public class MyArrayList
 {
     private Integer[] list;
+    private int size;
+
 
     /**
      * Constructs an empty list with an initial capacity of ten.
      */
     public MyArrayList() {
         list = new Integer[10];
-        // TODO: you can add code here
+        size = 0;
+
     }
 
-    /**
-     * Appends the specified Integer to the <b>end</b> of the list.
-     * @param item Integer to be appended to this list
-     * @throws NullPointerException if item is null
-     */
     public void addLast(Integer item) {
-        // TODO: your code goes here
-        list[size++]=item;
+        //important
+        if(item == null) {
+            throw new NullPointerException();
+        }
+        if(size == list.length) {
+            Integer[] newList = new Integer[list.length * 2];
+            System.arraycopy(list, 0, newList, 0, size);
+            list = newList;
+        }
+        list[size] = item;
     }
 
-    /**
-     * Inserts the specified Integer at the specified position in this list.
-     * Shifts the element currently in that position (if any) and any subsequent
-     * elements to the right (adding one to their indices).
-     * @param index index at which the specified element is to be inserted
-     * @param item Integer to be inserted
-     * @throws NullPointerException if item is null
-     */
     public void add(int index, Integer item) {
+        //important
+        if(item == null) {
+            throw new NullPointerException();
+        }
+        if(index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
 
         if(size == list.length){
             Integer[] newlist = new Integer[list.length*2];
@@ -61,29 +66,18 @@ public class MyArrayList
         size++;
         }
 
-
-    /**
-     * Removes the Integer at the specified position in this list. Shifts any
-     * subsequent Integers to the left (subtracts one from their indices).
-     * @param index the index of the element to remove
-     * @return the element that was removed from the list
-     */
     public Integer remove(int index) {
-        // TODO: modify the code here
-        Integer removed = list[index];
-
-        for(int i = index; i < size -1; i++){
+        //important
+        if(index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        for(int i = index; i < size - 1; i++) {
             list[i] = list[i + 1];
         }
-        list[--size] = null; //Avoid memory leaks
-        return removed;
+        size--;
+
     }
 
-    /**
-     * Returns the Integer at the specified position in this list.
-     * @param index index of the element to return
-     * @return the Integer at the specified position in this list
-     */
     public Integer get(int index) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
@@ -111,8 +105,7 @@ public class MyArrayList
      * @return the number of Integers in this list
      */
     public int size() {
-        // TODO: modify the code here
-
+        return list.size();
     }
 
     /**
@@ -124,10 +117,13 @@ public class MyArrayList
      * @throws NullPointerException if item is null
      */
     public int indexOf(Integer item) {
-        // TODO: modify the code here
-        return 0;
-    }
-
+           for (int i = 0; i < elements.length; i++) {
+                   if (elements[i].equals(item)) {
+                       return i; // Return the index if the item is found
+                   }
+               }
+               return -1; // Return -1 if the item is not found
+           }
     /**
      * Returns <code>true</code> if this list contains the specified Integer.
      * @param item Integer whose presence in this list is to be tested
@@ -135,26 +131,31 @@ public class MyArrayList
      * @throws NullPointerException if item is null
      */
     public boolean contains(Integer item) {
-        // TODO: modify the code here
-        return false;
-    }
+        for (Integer element : elements) {
+            if (element.equals(item)) {
+                return true; // Return true if the item is found
+            }
+        }
 
-    /**
-     * Removes all the elements from this list.
-     * @post the capacity of the array should not change
-     */
-    public void clear() {
-        // TODO: your code goes here
-    }
 
-    /**
-     * Returns <code>true</code> if this list has no elements.
-     * @return true if this list is empty
-     */
-    public boolean isEmpty() {
-        // TODO: modify the code here
-        return false;
-    }
-}
+
+     public void clear () {
+
+            for (int i = 0; i < elements.length; i++) {
+
+            }
+            elements[i] = null; // Set each element to null
+
+
+            /**
+             * Returns <code>true</code> if this list has no elements.
+             * @return true if this list is empty
+             */
+
+            public boolean isEmpty () {
+                return size == 0; // Return true if there are no elements
+               }
+            }
+        }
     }
 

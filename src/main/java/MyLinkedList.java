@@ -21,8 +21,7 @@
  * avoid the <code>IndexOutOfBoundsException</code> and throw the
  * <code>NullPointerException</code> where noted.
  */
-public class MyLinkedList
-{
+public class MyLinkedList {
     /**
      * The Node class is a private inner class of the <code>MyLinkedList</code>
      * class. Since none of the methods of <code>MyLinkedList</code> will return
