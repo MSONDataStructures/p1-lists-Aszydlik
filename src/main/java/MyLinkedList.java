@@ -45,6 +45,7 @@ public class MyLinkedList
     public MyLinkedList() {
         first = null;
         // TODO: you can add code here
+
     }
 
     /**
@@ -54,6 +55,10 @@ public class MyLinkedList
      */
     public void addFirst(Integer item) {
         // TODO: your code goes here
+        Node n = new Node();
+        first = n;
+        n.next = first;
+
     }
 
     /**
@@ -66,6 +71,10 @@ public class MyLinkedList
      */
     public void add(int index, Integer item) {
         // TODO: your code goes here
+        Node current = first;
+        current= current.next;
+        Node.next = current.next;
+        current.next=node;
     }
 
     /**
@@ -75,8 +84,34 @@ public class MyLinkedList
      * @return the Integer that was removed from the list
      */
     public Integer remove(int index) {
-        // TODO: modify the code here
-        return null;
+        if (index < 0) {
+            throw new IndexOutOfBoundsException("Index: " + index);
+        }
+
+        Node current = head; // Assuming 'head' is the start of your linked list
+        Node previous = null;
+
+        // Special case for removing the head
+        if (index == 0) {
+            if (head == null) {
+                throw new IndexOutOfBoundsException("Index: " + index + ", Size: 0");
+            }
+            head = head.next; // Move head to the next node
+            return current.value; // Return the removed value
+        }
+
+        for (int i = 0; i < index; i++) {
+            if (current == null) {
+                throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + i);
+            }
+            previous = current;
+            current = current.next; // Move to the next node
+        }
+
+        // If we reached here, current is the node to remove
+        previous.next = current.next; // Bypass the current node
+        return current.value; // Return the removed value
+    }
     }
 
     /**
@@ -105,9 +140,17 @@ public class MyLinkedList
      * @return the number of Integers in this list
      */
     public int size() {
-        // TODO: modify the code here
-        return 0;
-    }
+
+            int count = 0;
+            Node current = head; // Assuming 'head' is the start of your linked list
+
+            while (current != null) {
+                count++;
+                current = current.next; // Move to the next node
+            }
+
+            return count; // Return the total count of nodes
+        }
 
     /**
      * Returns the index of the first occurrence of the specified Integer in this list,

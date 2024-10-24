@@ -35,6 +35,7 @@ public class MyArrayList
      */
     public void addLast(Integer item) {
         // TODO: your code goes here
+        list[size++]=item;
     }
 
     /**
@@ -46,8 +47,20 @@ public class MyArrayList
      * @throws NullPointerException if item is null
      */
     public void add(int index, Integer item) {
-        // TODO: your code goes here
-    }
+
+        if(size == list.length){
+            Integer[] newlist = new Integer[list.length*2];
+            System.arraycopy(list, 0, newlist, 0, list.length);
+            list = newlist;
+        }
+
+        for(int i= size; i > index; i--) {
+            list[i] = list[i - 1];
+        }
+        list[index] = item;
+        size++;
+        }
+
 
     /**
      * Removes the Integer at the specified position in this list. Shifts any
@@ -57,7 +70,13 @@ public class MyArrayList
      */
     public Integer remove(int index) {
         // TODO: modify the code here
-        return null;
+        Integer removed = list[index];
+
+        for(int i = index; i < size -1; i++){
+            list[i] = list[i + 1];
+        }
+        list[--size] = null; //Avoid memory leaks
+        return removed;
     }
 
     /**
@@ -66,10 +85,13 @@ public class MyArrayList
      * @return the Integer at the specified position in this list
      */
     public Integer get(int index) {
-        // TODO: modify the code here
-        return null;
-    }
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
 
+            return list.get(index);
+        }
+    }
+    
     /**
      * Replaces the Integer at the specified position in this list with the
      * specified Integer.
@@ -78,16 +100,19 @@ public class MyArrayList
      * @throws NullPointerException if item is null
      */
     public void set(int index, Integer item) {
-        // TODO: your code goes here
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        elements[index] = item;
     }
-
+    // Assuming 'elements' is your array or list that holds the items
     /**
      * Returns the number of Integers in this list.
      * @return the number of Integers in this list
      */
     public int size() {
         // TODO: modify the code here
-        return 0;
+
     }
 
     /**
@@ -131,3 +156,5 @@ public class MyArrayList
         return false;
     }
 }
+    }
+
