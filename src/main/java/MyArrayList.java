@@ -1,21 +1,4 @@
-/**
- * The MyArrayList class is the implementation of an array list of integers.
- * <p>
- * The data in the list will be stored in an array, and the basic
- * <code>ArrayList</code> methods <code>add</code>, <code>remove</code>,
- * <code>set</code>, <code>get</code>, and <code>size</code> will be
- * implemented, as well as the additional methods <code>indexOf</code>,
- * <code>contains</code>, <code>clear</code>, and <code>isEmpty</code>.
- * <p>
- * Students should not, obviously, use the <code>java.util.ArrayList</code>
- * Java library class. The choices that you make regarding the management
- * of the list array will influence how the methods are implemented. You
- * may add any additional instance fields as desired. The choice that has
- * been made for you is that the default constructor should give an initial
- * capacity of ten elements. Be sure to avoid the <code>IndexOutOfBoundsException</code>,
- * and you will need to throw the <code>NullPointerException</code> in places
- * as specified in the Javadoc and the JUnit <code>MyArrayListTest</code> class.
- */
+
 public class MyArrayList
 {
     private Integer[] list;

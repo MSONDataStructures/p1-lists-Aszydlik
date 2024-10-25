@@ -1,34 +1,6 @@
-/**
- * The MyLinkedList class is the implementation of a singly-linked list of
- * integers.
- * <p>
- * The data in the list will be stored in <code>Node</code> objects, with
- * each node storing one integer and a link to the next node in the list.
- * Our <code>MyLinkedList</code> will implement many of the same methods
- * as the <code>MyArrayList</code> class, but here the <code>add</code>
- * method with one parameter becomes the <code>addFirst</code> method;
- * instead of adding to the end of the list, it adds to the front.
- * <p>
- * Students should not, again, use the <code>java.util.LinkedList</code>
- * Java library class. Due to the nature of the Java garbage collector,
- * attention must be paid to the order used for certain operations. You
- * need to "hold on" to anything you do not want to lose with an object
- * reference, and only overwrite a reference if you no longer need the
- * object that it is referencing.
- * <p>
- * You may, of course, wish to add additional instance fields and private
- * methods, but please do not modify public interface. Again, remember to
- * avoid the <code>IndexOutOfBoundsException</code> and throw the
- * <code>NullPointerException</code> where noted.
- */
+
 public class MyLinkedList {
-    /**
-     * The Node class is a private inner class of the <code>MyLinkedList</code>
-     * class. Since none of the methods of <code>MyLinkedList</code> will return
-     * a node, it is safe to make the instance fields here public.
-     * If you prefer, you may replace this with a separate top-level class.
-     * Also, you can build a constructor or use the default constructor.
-     */
+
     private static class Node
     {
         // These fields both default to null.
