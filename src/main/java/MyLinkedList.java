@@ -36,154 +36,148 @@ public class MyLinkedList {
         public Node next;
     }
 
-    private Node first;
+    private Node head;
+    private Node tail;
+    private int size;
 
-    /**
-     * Constructs an empty list.
-     */
+
+
     public MyLinkedList() {
-        first = null;
-        // TODO: you can add code here
+        head = null;
+        tail = null;
+        size = 0;
 
     }
 
-    /**
-     * Appends the specified Integer to the beginning of the list.
-     * @param item Integer to be appended to this list
-     * @throws NullPointerException if item is null
-     */
     public void addFirst(Integer item) {
-        // TODO: your code goes here
-        Node n = new Node();
-        first = n;
-        n.next = first;
+        if(item == null) {
+            throw new NullPointerException();
+        }
 
+        Node newNode = new Node();
+        newNode.next = head;
+        head = newNode;
+        size++;
     }
 
-    /**
-     * Inserts the specified Integer at the specified position in this list.
-     * Shifts the element currently in that position (if any) and any subsequent
-     * elements to the right (adding one to their indices).
-     * @param index index at which the specified Integer is to be inserted
-     * @param item Integer to be inserted
-     * @throws NullPointerException if item is null
-     */
     public void add(int index, Integer item) {
-        // TODO: your code goes here
-        Node current = first;
-        current= current.next;
-        Node.next = current.next;
-        current.next=node;
+        //important
+        if(item == null) {
+            throw new NullPointerException();
+        }
+        if(index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        if(index == 0) {
+            addFirst(item);
+        }
+        Node newNode = new Node();
+        Node current = head;
+        for(int i = 0; i < index-1; i++) {
+            current = current.next;
+        }
+        newNode.value = current.value;
+        newNode.next = current.next;
+        size++;
+
     }
 
-    /**
-     * Removes the Integer at the specified position in this list. Shifts any
-     * subsequent Integers to the left (subtracts one from their indices).
-     * @param index the index of the Integer to remove
-     * @return the Integer that was removed from the list
-     */
     public Integer remove(int index) {
-        if (index < 0) {
-            throw new IndexOutOfBoundsException("Index: " + index);
+        //important
+        if(index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
         }
-
-        Node current = head; // Assuming 'head' is the start of your linked list
-        Node previous = null;
-
-        // Special case for removing the head
-        if (index == 0) {
-            if (head == null) {
-                throw new IndexOutOfBoundsException("Index: " + index + ", Size: 0");
+        Integer removedValue;
+        if(index == 0) {
+            removedValue = head.value;
+            head = head.next;
+        }
+        else {
+            Node current = head;
+            for(int i = 0; i < index-1; i++) {
+                current = current.next;
             }
-            head = head.next; // Move head to the next node
-            return current.value; // Return the removed value
+            removedValue = current.value;
+            current.next = current.next.next;
         }
-
-        for (int i = 0; i < index; i++) {
-            if (current == null) {
-                throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + i);
-            }
-            previous = current;
-            current = current.next; // Move to the next node
-        }
-
-        // If we reached here, current is the node to remove
-        previous.next = current.next; // Bypass the current node
-        return current.value; // Return the removed value
-    }
+        size--;
+        return removedValue;
     }
 
-    /**
-     * Returns the Integer at the specified position in this list.
-     * @param index index of the element to return
-     * @return the Integer at the specified position in this list
-     */
+
     public Integer get(int index) {
-       //important
+       //important++
         if(index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
-        }
+            Node current = head;
+            for(int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            return current.value;
 
-        return list[index];
+        }
+        return head.value;
+
     }
 
 
     public void set(int index, Integer item) {
-       //important
-        if(index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
+            //imporant
+            if (item == null) {
+                throw new NullPointerException("Item cannot be null");
+            }
+        Node current = head;
+
+
+        for (int i = 0; i < index; i++) {
+            current = current.next; // Move to the next node
         }
-        list[index] = item;
+        current.value = item;
     }
 
-    /**
-     * Returns the number of Integers in this list.
-     * @return the number of Integers in this list
-     */
     public int size() {
-
         return size;
-
         }
 
-    /**
-     * Returns the index of the first occurrence of the specified Integer in this list,
-     * or -1 if this list does not contain the Integer.
-     * @param item Integer to search for
-     * @return the index of the first occurrence of the specified Integer in this list,
-     * or -1 if this list does not contain the Integer
-     * @throws NullPointerException if item is null
-     */
     public int indexOf(Integer item) {
-        // TODO: modify the code here
-        return 0;
-    }
+       //imporant
+        if (item == null) {
+            throw new NullPointerException("Item cannot be null");
+        }
 
-    /**
-     * Returns <code>true</code> if this list contains the specified Integer.
-     * @param item Integer whose presence in this list is to be tested
-     * @return true if this list contains the specified Integer
-     * @throws NullPointerException if item is null
-     */
+        Node current = head;
+       for(int i=0;i<size;i++) {
+           if(current.value == item) {
+               return i;
+           }
+           current = current.next;
+       }
+        return -1;
+    }
     public boolean contains(Integer item) {
-        // TODO: modify the code here
-        return false;
+        //important
+        if (item == null) {
+            throw new NullPointerException("Item cannot be null");
+        }
+
+        Node current = head;
+
+        while (current != null) {
+            if (current.value.equals(item)) {
+                return true;
+            }
+            current = current.next;
+        }
+            return false;
+
     }
 
-    /**
-     * Removes all the elements from this list. The list will be empty after this
-     * call returns.
-     */
-    public void clear() {
-        // TODO: your code goes here
-    }
-
-    /**
-     * Returns <code>true</code> if this list has no elements.
-     * @return true if this list is empty
-     */
+     public void clear() {
+         head = null;
+         tail = null;
+         size = 0;
+     }
     public boolean isEmpty() {
-        // TODO: modify the code here
-        return false;
+       return size() == 0;
     }
 }
+

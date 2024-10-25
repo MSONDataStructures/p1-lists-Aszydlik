@@ -22,9 +22,6 @@ public class MyArrayList
     private int size;
 
 
-    /**
-     * Constructs an empty list with an initial capacity of ten.
-     */
     public MyArrayList() {
         list = new Integer[10];
         size = 0;
@@ -80,75 +77,82 @@ public class MyArrayList
 
 
 
-    public Integer get(int index) {
+    public int get(int index) {
        //important
         if(index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("index:" + index + ", size:" + size);
+        }
+            return list[index];
         }
 
-            return list.get(index);
-        }
-    }
 
     public void set(int index, Integer item) {
         //important
-        if(item == null) {
+        if (item == null) {
             throw new NullPointerException();
         }
-        if(index < 0 || index >= size){
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
-
+        }
             list[index] = item;
+
+
     }
 
 
     public int size() {
-            //importan
-
         return size;
     }
 
 
     public int indexOf(Integer item) {
-           for (int i = 0; i < elements.length; i++) {
-                   if (elements[i].equals(item)) {
-                       return i; // Return the index if the item is found
-                   }
+           //important
+            if(item == null) {
+                throw new NullPointerException();
+            }
+           for (int i = 0; i < size; i++) {
+               if (list[i].equals(item)) {
+                   return i;
+
                }
-               return -1; // Return -1 if the item is not found
            }
-    /**
-     * Returns <code>true</code> if this list contains the specified Integer.
-     * @param item Integer whose presence in this list is to be tested
-     * @return true if this list contains the specified element
-     * @throws NullPointerException if item is null
-     */
-    public boolean contains(Integer item) {
-        for (Integer element : elements) {
-            if (element.equals(item)) {
-                return true; // Return true if the item is found
+               return -1;
+           }
+
+    public boolean contains(Integer item){
+            //important
+            if (item == null) {
+                throw new NullPointerException();
             }
+            for (int i = 0; i < size; i++) {
+                if (list[i].equals(item)) {
+                    return true;
+                }
+            }
+                return false;
+
+
+        }
+
+    public void clear() {
+            for (int i = 0; i < size; i++) {
+                list[i] = null;
+            }
+            size = 0;
+        }
+
+    public boolean isEmpty () {
+            return size == 0;
+            // Return true if there are no elements
         }
 
 
-
-     public void clear () {
-
-            for (int i = 0; i < elements.length; i++) {
-
-            }
-            elements[i] = null; // Set each element to null
-
-
-            /**
-             * Returns <code>true</code> if this list has no elements.
-             * @return true if this list is empty
-             */
-
-            public boolean isEmpty () {
-                return size == 0; // Return true if there are no elements
-               }
-            }
-        }
     }
+
+
+
+
+
+
+
 
