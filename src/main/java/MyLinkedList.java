@@ -146,7 +146,7 @@ public class MyLinkedList {
 
         Node current = head;
        for(int i=0;i<size;i++) {
-           if(current.value == item) {
+           if(current.value.equals(item)) {
                return i;
            }
            current = current.next;
