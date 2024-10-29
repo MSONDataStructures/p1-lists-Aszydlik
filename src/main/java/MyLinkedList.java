@@ -1,8 +1,7 @@
 
 public class MyLinkedList {
 
-    private static class Node
-    {
+    private static class Node {
         // These fields both default to null.
         public Integer value;
         public Node next;
@@ -13,7 +12,6 @@ public class MyLinkedList {
     private int size;
 
 
-
     public MyLinkedList() {
         head = null;
         tail = null;
@@ -22,7 +20,7 @@ public class MyLinkedList {
     }
 
     public void addFirst(Integer item) {
-        if(item == null) {
+        if (item == null) {
             throw new NullPointerException();
         }
 
@@ -34,18 +32,18 @@ public class MyLinkedList {
 
     public void add(int index, Integer item) {
         //important
-        if(item == null) {
+        if (item == null) {
             throw new NullPointerException();
         }
-        if(index < 0 || index > size) {
+        if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
-        if(index == 0) {
+        if (index == 0) {
             addFirst(item);
         }
         Node newNode = new Node();
         Node current = head;
-        for(int i = 0; i < index-1; i++) {
+        for (int i = 0; i < index - 1; i++) {
             current = current.next;
         }
         newNode.value = current.value;
@@ -56,17 +54,16 @@ public class MyLinkedList {
 
     public Integer remove(int index) {
         //important
-        if(index < 0 || index > size) {
+        if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         Integer removedValue;
-        if(index == 0) {
+        if (index == 0) {
             removedValue = head.value;
             head = head.next;
-        }
-        else {
+        } else {
             Node current = head;
-            for(int i = 0; i < index-1; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 current = current.next;
             }
             removedValue = current.value;
@@ -78,10 +75,10 @@ public class MyLinkedList {
 
 
     public Integer get(int index) {
-       //important++
-        if(index < 0 || index >= size()) {
+        //important++
+        if (index < 0 || index >= size()) {
             Node current = head;
-            for(int i = 0; i < index; i++) {
+            for (int i = 0; i < index; i++) {
                 current = current.next;
             }
             return current.value;
@@ -93,10 +90,10 @@ public class MyLinkedList {
 
 
     public void set(int index, Integer item) {
-            //imporant
-            if (item == null) {
-                throw new NullPointerException("Item cannot be null");
-            }
+        //imporant
+        if (item == null) {
+            throw new NullPointerException("Item cannot be null");
+        }
         Node current = head;
 
 
@@ -108,23 +105,24 @@ public class MyLinkedList {
 
     public int size() {
         return size;
-        }
+    }
 
     public int indexOf(Integer item) {
-       //imporant
+        //imporant
         if (item == null) {
             throw new NullPointerException("Item cannot be null");
         }
 
         Node current = head;
-       for(int i=0;i<size;i++) {
-           if(current.value.equals(item)) {
-               return i;
-           }
-           current = current.next;
-       }
+        for (int i = 0; i < size; i++) {
+            if (current.value.equals(item)) {
+                return i;
+            }
+            current = current.next;
+        }
         return -1;
     }
+
     public boolean contains(Integer item) {
         //important
         if (item == null) {
@@ -139,17 +137,18 @@ public class MyLinkedList {
             }
             current = current.next;
         }
-            return false;
+        return false;
 
     }
 
-     public void clear() {
-         head = null;
-         tail = null;
-         size = 0;
-     }
+    public void clear() {
+        head = null;
+        tail = null;
+        size = 0;
+    }
+
     public boolean isEmpty() {
-       return size() == 0;
+        return size() == 0;
     }
 }
 

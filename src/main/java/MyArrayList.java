@@ -1,6 +1,5 @@
 
-public class MyArrayList
-{
+public class MyArrayList {
     private Integer[] list;
     private int size;
 
@@ -13,10 +12,10 @@ public class MyArrayList
 
     public void addLast(Integer item) {
         //important
-        if(item == null) {
+        if (item == null) {
             throw new NullPointerException();
         }
-        if(size == list.length) {
+        if (size == list.length) {
             Integer[] newList = new Integer[list.length * 2];
             System.arraycopy(list, 0, newList, 0, size);
             list = newList;
@@ -26,25 +25,25 @@ public class MyArrayList
 
     public void add(int index, Integer item) {
         //important
-        if(item == null) {
+        if (item == null) {
             throw new NullPointerException();
         }
-        if(index < 0 || index > size) {
+        if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
 
-        if(size == list.length){
-            Integer[] newlist = new Integer[list.length*2];
+        if (size == list.length) {
+            Integer[] newlist = new Integer[list.length * 2];
             System.arraycopy(list, 0, newlist, 0, list.length);
             list = newlist;
         }
 
-        for(int i= size; i > index; i--) {
+        for (int i = size; i > index; i--) {
             list[i] = list[i - 1];
         }
         list[index] = item;
         size++;
-        }
+    }
 
     public Integer remove(int index) {
         //important
@@ -59,14 +58,13 @@ public class MyArrayList
     }
 
 
-
     public int get(int index) {
-       //important
-        if(index < 0 || index >= size) {
+        //important
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("index:" + index + ", size:" + size);
         }
-            return list[index];
-        }
+        return list[index];
+    }
 
 
     public void set(int index, Integer item) {
@@ -77,7 +75,7 @@ public class MyArrayList
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-            list[index] = item;
+        list[index] = item;
 
 
     }
@@ -89,48 +87,48 @@ public class MyArrayList
 
 
     public int indexOf(Integer item) {
-           //important
-            if(item == null) {
-                throw new NullPointerException();
-            }
-           for (int i = 0; i < size; i++) {
-               if (list[i].equals(item)) {
-                   return i;
-
-               }
-           }
-               return -1;
-           }
-
-    public boolean contains(Integer item){
-            //important
-            if (item == null) {
-                throw new NullPointerException();
-            }
-            for (int i = 0; i < size; i++) {
-                if (list[i].equals(item)) {
-                    return true;
-                }
-            }
-                return false;
-
-
+        //important
+        if (item == null) {
+            throw new NullPointerException();
         }
+        for (int i = 0; i < size; i++) {
+            if (list[i].equals(item)) {
+                return i;
 
-    public void clear() {
-            for (int i = 0; i < size; i++) {
-                list[i] = null;
             }
-            size = 0;
         }
+        return -1;
+    }
 
-    public boolean isEmpty () {
-            return size == 0;
-            // Return true if there are no elements
+    public boolean contains(Integer item) {
+        //important
+        if (item == null) {
+            throw new NullPointerException();
         }
+        for (int i = 0; i < size; i++) {
+            if (list[i].equals(item)) {
+                return true;
+            }
+        }
+        return false;
 
 
     }
+
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            list[i] = null;
+        }
+        size = 0;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+        // Return true if there are no elements
+    }
+
+
+}
 
 
 
