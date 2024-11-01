@@ -16,11 +16,21 @@ public class MyArrayList {
             throw new NullPointerException();
         }
         if (size == list.length) {
-            Integer[] newList = new Integer[list.length * 2];
-            System.arraycopy(list, 0, newList, 0, size);
-            list = newList;
+            resize();
         }
-        list[size] = item;
+            list[size] = item;
+            size++;
+
+}
+    private void resize() {
+        // Create a new array with double the current size
+        Integer[] newArray = new Integer[list.length * 2];
+
+        // Copy the existing elements to the new array
+        System.arraycopy(list, 0, newArray, 0, size);
+
+        // Replace the old array with the new one
+        list = newArray;
     }
 
     public void add(int index, Integer item) {
