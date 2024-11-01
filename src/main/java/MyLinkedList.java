@@ -28,6 +28,7 @@ public class MyLinkedList {
         newNode.next = head;
         head = newNode;
         size++;
+
     }
 
     public void add(int index, Integer item) {
