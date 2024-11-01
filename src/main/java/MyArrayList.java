@@ -60,9 +60,9 @@ public class MyArrayList {
 
     public int get(int index) {
         //important
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("index:" + index + ", size:" + size);
-        }
+      //  if (index < 0 || index >= size) {
+        //    throw new IndexOutOfBoundsException("index:" + index + ", size:" + size);
+        //}
         return list[index];
     }
 

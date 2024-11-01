@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 //import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -163,11 +164,11 @@ public class MyArrayListTest {
     @Test
     public void testMALLargeSimple() {
         int max = 100000;
-        for(int i = 0; i < max; i++){
+        for (int i = 0; i < max; i++) {
             assertEquals(i, bigMAL.size());
             bigMAL.addLast(i);
         }
-        for(int i = max; i > 0; i--){
+        for (int i = max; i > 0; i--) {
             assertEquals(i, bigMAL.size());
             bigMAL.remove(i - 1);
         }
@@ -213,7 +214,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void testMLLNullPointerException(){
+    public void testMLLNullPointerException() {
         smallMAL.addLast(302);
         smallMAL.addLast(301);
         smallMAL.addLast(300);
