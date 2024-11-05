@@ -31,6 +31,7 @@ public class MyArrayList {
 
         // Replace the old array with the new one
         list = newArray;
+
     }
 
     public void add(int index, Integer item) {
